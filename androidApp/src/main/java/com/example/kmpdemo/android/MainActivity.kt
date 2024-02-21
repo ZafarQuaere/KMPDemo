@@ -63,9 +63,14 @@ class MainActivity : ComponentActivity() {
                             Toast.makeText(applicationContext,"Sign up clicked", Toast.LENGTH_SHORT).show()
                             scope.launch(Dispatchers.IO) {
                                 runCatching {
-                                    val data = viewModel.callPostApi("posts")
+
 //                                    val data = viewModel.postToRemoteSource(applicationContext).post("posts",PostBody("foo","bar",1))
-                                    text = "kuch bhi ka data"
+                                    val data = viewModel.callPostApi("posts")
+                                    text = data?.body +" " + data?.title + " " + data?.userId + " " + data?.id
+                                    println("Title >> "+data?.title + " body >> " + data?.body + "  userId >>" + data?.userId + " id >>> " + data?.id)
+//                                    val data = viewModel.callRegisterApi("api/register")
+//                                    text = data?.id.toString() +" " + data?.token
+//                                    println("Title >> "+data?.id + " body >> " + data?.token)
 
                                 }.onFailure {
                                     Log.e("--x-x--x-x----", it.toString())

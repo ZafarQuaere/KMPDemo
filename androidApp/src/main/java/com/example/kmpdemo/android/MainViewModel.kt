@@ -2,6 +2,8 @@ package com.example.kmpdemo.android
 
 import androidx.lifecycle.ViewModel
 import com.example.kmpdemo.LLMApiClient
+import com.example.kmpdemo.data.PostResponse
+import com.example.kmpdemo.data.RegisterResponse
 
 class MainViewModel : ViewModel() {
     val tag = "MainViewModel"
@@ -78,9 +80,13 @@ class MainViewModel : ViewModel() {
 
     }
 
-    fun callPostApi(path: String): Any {
-        LLMApiClient().callPostApi(path)
-        return "Loading..."
+    suspend fun callPostApi(path: String): PostResponse? {
+        val callPostApi: PostResponse? = LLMApiClient().callPostApi(path)
+        return callPostApi
     }
 
+    fun callRegisterApi(path: String): RegisterResponse? {
+        val callPostApi: RegisterResponse? = LLMApiClient().callRegisterApi(path)
+        return callPostApi
+    }
 }

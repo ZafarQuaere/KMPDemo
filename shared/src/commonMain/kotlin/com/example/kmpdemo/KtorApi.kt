@@ -11,6 +11,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+//private const val BASE_URL = "https://reqres.in/"
 
 internal abstract class KtorApi {
 
